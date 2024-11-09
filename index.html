@@ -4,8 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <section>
+        <form action="#" name="login" >
+            <h2 style="margin-top: -5px; text-align: center; padding-right: 30px;">Login Form</h2>
+            <label for="">Name:</label><br>
+            <input type="text" placeholder="Your Name" name="name"><br>
+            <label for="">Email:</label><br>
+            <input type="email" name="email" id="" placeholder="Your Email"><br>
+            <label for="">Password:</label><br>
+            <input type="password" name="password" id=""Enter Password> <br>
+            <label for="">Gender:</label>
+            <input type="radio" name="sex" id="">
+            <label for="">Male</label>
+            <input type="radio" name="sex" id="">
+            <label for="">Female</label>
+            <br>
+            <label for="">Educations:</label>
+            <select name="" id="">
+                <option value="SSC">SSC</option>
+                <option value="HSC">HSC</option>
+                <option value="BSc">BSc</option>
+            </select><br>
+            <input class="btn" type="submit" value="Submit" onclick="my_function()">
+            <input class="btn" type="reset" value="Reset">
+            <input type="button" value="Close" onclick="self.close();">
+        </form>
+    </section>
+    <script>
+        function my_function(){
+            const txtName = document.login.name.value;
+            const txtEmail = document.login.email.value;
+            const txtPassword = document.login.password.value;
+            const doc = open('','','width=500px, height=600px');
+            with(doc.document){
+                write("Name: "+txtName + "<br>" + "<br>" );
+                write("Email: "+ txtEmail + "<br>" + "<br>");
+                write("Password: "+ txtPassword + "<br>" +"<br>")
+                write("<input type='button' value='Close' onclick='self.close();'>")
+            }
+
+        }
+    </script>
 </body>
 </html>
