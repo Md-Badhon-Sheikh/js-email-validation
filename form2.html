@@ -37,7 +37,7 @@
             <div>
                 <input class="btn" type="submit" value="Submit" onclick="myFunction()">
                 <input class="btn" type="reset" value="Reset">
-                
+
             </div>
         </form>
     </section>
@@ -60,6 +60,15 @@
             const txtEmail = document.login.myEmail.value;
             const txtPassword = document.login.password.value;
             const language = document.login.vasha.value;
+            if(txtPassword.length<6){
+                alert("Password is Sort" + " " + txtPassword.length);
+                return;
+            }
+            else if(txtPassword.length>10){
+                alert("Password is Long" + " " + txtPassword.length);
+                return;
+            }
+            
 
             let sex = '';
             for (i = 0; i < document.login.sex.length; i++) {
@@ -75,18 +84,24 @@
             }
 
 
-            const doc = open('', '', 'width=500px, height=600px');
 
-            with (doc.document) {
-                write("<body style='background-color: aquamarine;'>");
-                write("Name: " + txtName + '<br> <br>');
-                write("Email: " + txtEmail + '<br> <br>');
-                write("Password: " + txtPassword + '<br> <br>');
-                write("Gender: " + sex + '<br> <br>');
-                write("Education: " + txtEducation + '<br> <br>');
-                write("Language: " + language + '<br> <br>');
-                write("<input type='button' value='Close' onclick='self.close()'>");
-                write("<input type='button' value='Print' onclick='self.print()'>");
+
+            if (txtName && txtEmail) {
+                const doc = open('', '', 'width=500px, height=600px');
+                with (doc.document) {
+                    write("<body style='background-color: aquamarine;'>");
+                    write("Name: " + txtName + '<br> <br>');
+                    write("Email: " + txtEmail + '<br> <br>');
+                    write("Password: " + txtPassword + '<br> <br>');
+                    write("Gender: " + sex + '<br> <br>');
+                    write("Education: " + txtEducation + '<br> <br>');
+                    write("Language: " + language + '<br> <br>');
+                    write("<input type='button' value='Close' onclick='self.close()'>");
+                    write("<input type='button' value='Print' onclick='self.print()'>");
+                }
+            }
+            else{
+                alert("All field are required");
             }
         }
     </script>
