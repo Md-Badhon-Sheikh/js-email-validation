@@ -13,37 +13,66 @@
             <label for="">Name:</label><br>
             <input type="text" placeholder="Your Name" name="name"><br>
             <label for="">Email:</label><br>
-            <input type="email" name="email" id="" placeholder="Your Email"><br>
+            <input type="email" name="email" id="myEmail" placeholder="Your Email" onblur="checkEmail()"><br>
             <label for="">Password:</label><br>
             <input type="password" name="password" id=""Enter Password> <br>
             <label for="">Gender:</label>
-            <input type="radio" name="sex" id="">
+            <input type="radio" name="sex" id="" value="Male">
             <label for="">Male</label>
-            <input type="radio" name="sex" id="">
+            <input type="radio" name="sex" id="" value="Female">
             <label for="">Female</label>
             <br>
             <label for="">Educations:</label>
-            <select name="" id="">
+            <select name="education" id="">
                 <option value="SSC">SSC</option>
                 <option value="HSC">HSC</option>
                 <option value="BSc">BSc</option>
             </select><br>
             <input class="btn" type="submit" value="Submit" onclick="my_function()">
             <input class="btn" type="reset" value="Reset">
-            <input type="button" value="Close" onclick="self.close();">
+            
         </form>
     </section>
     <script>
+        function checkEmail(){
+            let email = document.getElementById("myEmail");
+            let emailNaN = /^[^ ] + @[^ ]+\.[a-z]{2,4}$ /;
+            if(!emailNaN.test(email.value)){
+                alert("please inter valid email");
+                document.getElementById("myEmail").style.borderColor="#FF0000";
+                return false;
+            }
+            else{
+                document.getElementById("myEmail").style.borderColor="#228B22";
+            }
+            return true;
+        }
         function my_function(){
             const txtName = document.login.name.value;
             const txtEmail = document.login.email.value;
             const txtPassword = document.login.password.value;
+            const txtEducation = document.login.education.value;
+
+            let sex = '';
+            for(i=0; i<document.login.sex.length; i++){
+                if(document.login.sex[i].checked){
+                    sex = document.login.sex[i].value;
+                }
+            }
+
             const doc = open('','','width=500px, height=600px');
+
             with(doc.document){
-                write("Name: "+txtName + "<br>" + "<br>" );
+                write("<body style='background-color:#17a589'>");
+
+                write( " Name: "+txtName + "<br>" + "<br>" );
                 write("Email: "+ txtEmail + "<br>" + "<br>");
                 write("Password: "+ txtPassword + "<br>" +"<br>")
-                write("<input type='button' value='Close' onclick='self.close();'>")
+                write("Gender: "+ sex + "<br>" +"<br>")
+                write("Educations: "+ txtEducation + "<br>" +"<br>")
+
+                write("<input type='button' value='Close' onclick='self.close();'>");
+                write("<input type='button' value='Print' onclick='self.print()'>")
             }
 
         }
