@@ -42,6 +42,8 @@
         </form>
     </section>
     <script>
+        // Email Validation 
+
         function checkEmail() {
             const email = document.getElementById('myEmail');
             const emailNaN = /^[^ ]+@[^ ]+\.[a-z]{2,4}$/;
@@ -55,27 +57,33 @@
             }
             return true;
         }
+
+        // Main function
         function myFunction() {
             const txtName = document.login.name.value;
             const txtEmail = document.login.myEmail.value;
             const txtPassword = document.login.password.value;
             const language = document.login.vasha.value;
-            if(txtPassword.length<6){
+
+            // password requirement
+            
+            if (txtPassword.length < 6) {
                 alert("Password is Sort" + " " + txtPassword.length);
                 return;
             }
-            else if(txtPassword.length>10){
+            else if (txtPassword.length > 10) {
                 alert("Password is Long" + " " + txtPassword.length);
                 return;
             }
-            
 
+            // checked Gender 
             let sex = '';
             for (i = 0; i < document.login.sex.length; i++) {
                 if (document.login.sex[i].checked) {
                     sex = document.login.sex[i].value;
                 }
             }
+            // Checked education 
             let txtEducation = '';
             for (let i = 0; i < document.login.education.length; i++) {
                 if (document.login.education[i].checked) {
@@ -83,9 +91,7 @@
                 }
             }
 
-
-
-
+            // Blank Validation 
             if (txtName && txtEmail) {
                 const doc = open('', '', 'width=500px, height=600px');
                 with (doc.document) {
@@ -100,9 +106,11 @@
                     write("<input type='button' value='Print' onclick='self.print()'>");
                 }
             }
-            else{
+            else {
                 alert("All field are required");
+                return;
             }
+
         }
     </script>
 </body>
